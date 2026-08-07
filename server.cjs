@@ -65532,51 +65532,46 @@ function getApiKeyFromEnv() {
 
 // src/data/bangDeedsData.ts
 var BANG_DEED_OPTIONS = [
-  {
-    id: "bang-001",
-    nameEn: "Mindlessly scrolling Reels",
-    nameBn: "Mindlessly reels scroll kora",
-    category: "time",
-    severity: 1,
-    classification: "time_wasting",
-    descriptionEn: "Wasting time on social media feed.",
-    descriptionBn: "Social media te beshi time waste kora.",
-    islamicReferenceId: "ref-time-hadith"
-  },
-  {
-    id: "bang-002",
-    nameEn: "Not listening to parents",
-    nameBn: "Parents er kotha na shona",
-    category: "speech",
-    severity: 3,
-    classification: "sin",
-    descriptionEn: "Disrespectful behavior towards parents.",
-    descriptionBn: "Parents er kotha ignore kora.",
-    islamicReferenceId: "ref-parents-quran"
-  },
-  {
-    id: "bang-003",
-    nameEn: "Gossip about friends",
-    nameBn: "Friends der niye gossip kora",
-    category: "speech",
-    severity: 2,
-    classification: "bad_habit",
-    descriptionEn: "Backbiting friends.",
-    descriptionBn: "Bondhu der niye pechone kotha bola.",
-    islamicReferenceId: "ref-gheebat-quran"
-  },
-  // ... (Adding 200+ items here would be very large, I will add a substantial block and structure)
-  {
-    id: "bang-004",
-    nameEn: "Procrastinating Salah",
-    nameBn: "Salah delay kora",
-    category: "islamic_discipline",
-    severity: 2,
-    classification: "sin",
-    descriptionEn: "Delaying prayer.",
-    descriptionBn: "Salah pora e late kora.",
-    islamicReferenceId: "ref-salah-quran"
-  }
+  { id: "bang-001", nameEn: "Mindlessly scrolling Reels", nameBn: "Mindlessly reels scroll kora", category: "time", severity: 1, classification: "time_wasting", descriptionEn: "Wasting time on social media feed.", descriptionBn: "Social media te beshi time waste kora.", islamicReferenceId: "ref-time-hadith" },
+  { id: "bang-002", nameEn: "Not listening to parents", nameBn: "Parents er kotha na shona", category: "speech", severity: 3, classification: "sin", descriptionEn: "Disrespectful behavior towards parents.", descriptionBn: "Parents er kotha ignore kora.", islamicReferenceId: "ref-parents-quran" },
+  { id: "bang-003", nameEn: "Gossip about friends", nameBn: "Friends der niye gossip kora", category: "speech", severity: 2, classification: "bad_habit", descriptionEn: "Backbiting friends.", descriptionBn: "Bondhu der niye pechone kotha bola.", islamicReferenceId: "ref-gheebat-quran" },
+  { id: "bang-004", nameEn: "Procrastinating Salah", nameBn: "Salah delay kora", category: "islamic_discipline", severity: 2, classification: "sin", descriptionEn: "Delaying prayer.", descriptionBn: "Salah pora e late kora.", islamicReferenceId: "ref-salah-quran" },
+  { id: "bang-005", nameEn: "Wasting food", nameBn: "Khabaar nosto kora", category: "behavior", severity: 2, classification: "bad_habit", descriptionEn: "Not valuing the food.", descriptionBn: "Khabaar fele dewa ba nosto kora.", islamicReferenceId: "ref-food-quran" },
+  { id: "bang-006", nameEn: "Lying to friends", nameBn: "Bondhuder sathe mithye bola", category: "speech", severity: 2, classification: "sin", descriptionEn: "Dishonesty in conversation.", descriptionBn: "Kotha bolay mithye ashroy newa.", islamicReferenceId: "ref-lying-hadith" },
+  { id: "bang-007", nameEn: "Showing arrogance", nameBn: "Ahongkar kora", category: "behavior", severity: 3, classification: "sin", descriptionEn: "Being prideful.", descriptionBn: "Nijeke boro bhabha ba ahongkar kora.", islamicReferenceId: "ref-arrogance-hadith" },
+  { id: "bang-008", nameEn: "Ignoring messages", nameBn: "Message ignore kora", category: "social", severity: 1, classification: "bad_habit", descriptionEn: "Not replying to messages.", descriptionBn: "Message peyeo ignore kora.", islamicReferenceId: "ref-manners-hadith" },
+  { id: "bang-009", nameEn: "Spending money on useless things", nameBn: "Faltu jinish e taka khoroch", category: "finance", severity: 2, classification: "time_wasting", descriptionEn: "Unnecessary expenses.", descriptionBn: "Dorkar chara faltu jinish e taka nosto kora.", islamicReferenceId: "ref-spending-quran" },
+  { id: "bang-010", nameEn: "Being angry unnecessarily", nameBn: "Okarone raag kora", category: "behavior", severity: 2, classification: "bad_habit", descriptionEn: "Losing temper.", descriptionBn: "Okarone raag dekhano.", islamicReferenceId: "ref-anger-hadith" },
+  { id: "bang-011", nameEn: "Not doing Dhikr", nameBn: "Dhikr na kora", category: "islamic_discipline", severity: 1, classification: "bad_habit", descriptionEn: "Forgetting Allah.", descriptionBn: "Allah ke shoron na kora.", islamicReferenceId: "ref-dhikr-quran" },
+  { id: "bang-012", nameEn: "Watching inappropriate videos", nameBn: "Oshlil video dekha", category: "behavior", severity: 3, classification: "sin", descriptionEn: "Watching forbidden content.", descriptionBn: "Oshlil ba kharap kisu dekha.", islamicReferenceId: "ref-gaze-quran" },
+  { id: "bang-013", nameEn: "Delaying work", nameBn: "Kaaj jomiye rakha", category: "time", severity: 1, classification: "time_wasting", descriptionEn: "Procrastinating tasks.", descriptionBn: "Kaaj pore korbo bole jomiye rakha.", islamicReferenceId: "ref-time-hadith" },
+  { id: "bang-014", nameEn: "Speaking too loud", nameBn: "Chichiye kotha bola", category: "speech", severity: 1, classification: "bad_habit", descriptionEn: "Speaking rudely.", descriptionBn: "Oshobhyo bhabe chichiye kotha bola.", islamicReferenceId: "ref-speech-hadith" },
+  { id: "bang-015", nameEn: "Being lazy in Fajr", nameBn: "Fajr e olosota", category: "islamic_discipline", severity: 3, classification: "sin", descriptionEn: "Missing Fajr prayer due to laziness.", descriptionBn: "Fajr er namaz e olosota kora.", islamicReferenceId: "ref-salah-quran" },
+  { id: "bang-016", nameEn: "Complaining too much", nameBn: "Beshi shikayet kora", category: "behavior", severity: 1, classification: "bad_habit", descriptionEn: "Being ungrateful.", descriptionBn: "Shob kisu niye shikayet kora.", islamicReferenceId: "ref-gratitude-quran" },
+  { id: "bang-017", nameEn: "Using bad words", nameBn: "Gaali dewa", category: "speech", severity: 3, classification: "sin", descriptionEn: "Profanity.", descriptionBn: "Gaali ba kharap bhasha byabohar kora.", islamicReferenceId: "ref-speech-hadith" },
+  { id: "bang-018", nameEn: "Not keeping promises", nameBn: "Kotha rakha na", category: "speech", severity: 2, classification: "sin", descriptionEn: "Breaking trust.", descriptionBn: "Kotha diye kotha na rakha.", islamicReferenceId: "ref-trust-quran" },
+  { id: "bang-019", nameEn: "Envying others", nameBn: "Onno ke rashk kora", category: "behavior", severity: 2, classification: "sin", descriptionEn: "Jealousy.", descriptionBn: "Onno ke dekhe rashk kora.", islamicReferenceId: "ref-envy-hadith" },
+  { id: "bang-020", nameEn: "Being messy", nameBn: "Godigodi bhab", category: "behavior", severity: 1, classification: "bad_habit", descriptionEn: "Disorganized.", descriptionBn: "Godigodi bhab rakha.", islamicReferenceId: "ref-clean-hadith" },
+  { id: "bang-021", nameEn: "Wasting water", nameBn: "Pani nosto kora", category: "behavior", severity: 1, classification: "bad_habit", descriptionEn: "Excessive use of water.", descriptionBn: "Oshongkho pani nosto kora.", islamicReferenceId: "ref-waste-quran" },
+  { id: "bang-022", nameEn: "Looking at screens before sleep", nameBn: "Shuar age screen dekha", category: "time", severity: 1, classification: "time_wasting", descriptionEn: "Using phone at night.", descriptionBn: "Shuar age beshi phone use kora.", islamicReferenceId: "ref-sleep-hadith" },
+  { id: "bang-023", nameEn: "Being selfish", nameBn: "Swarthopor howa", category: "behavior", severity: 2, classification: "bad_habit", descriptionEn: "Thinking only of self.", descriptionBn: "Shudhu nijer kotha bhabha.", islamicReferenceId: "ref-selfish-hadith" },
+  { id: "bang-024", nameEn: "Interrupting others", nameBn: "Kotha bole dewa", category: "speech", severity: 1, classification: "bad_habit", descriptionEn: "Cutting off conversation.", descriptionBn: "Onnoer kotha bole dewa.", islamicReferenceId: "ref-manners-hadith" },
+  { id: "bang-025", nameEn: "Not saying Alhamdulillah", nameBn: "Alhamdulillah na bola", category: "islamic_discipline", severity: 1, classification: "bad_habit", descriptionEn: "Forgetting to be grateful.", descriptionBn: "Okarone shukriya ada na kora.", islamicReferenceId: "ref-gratitude-quran" },
+  { id: "bang-026", nameEn: "Comparing with others", nameBn: "Onnoer sathe tulona", category: "behavior", severity: 1, classification: "bad_habit", descriptionEn: "Self-comparison.", descriptionBn: "Nijeke onnoer sathe tulona kora.", islamicReferenceId: "ref-comparison-hadith" },
+  { id: "bang-027", nameEn: "Overthinking", nameBn: "Beshi chinta kora", category: "behavior", severity: 1, classification: "bad_habit", descriptionEn: "Anxiety.", descriptionBn: "Beshi chinta kora.", islamicReferenceId: "ref-peace-quran" },
+  { id: "bang-028", nameEn: "Not helping others", nameBn: "Onno ke sahajjo na kora", category: "behavior", severity: 2, classification: "bad_habit", descriptionEn: "Lack of kindness.", descriptionBn: "Onnoer dorkar e sahajjo na kora.", islamicReferenceId: "ref-helping-hadith" },
+  { id: "bang-029", nameEn: "Being impatient", nameBn: "Dhoirjo na thaka", category: "behavior", severity: 2, classification: "bad_habit", descriptionEn: "Lacking patience.", descriptionBn: "Kono kisu te dhoirjo na dhora.", islamicReferenceId: "ref-patience-quran" },
+  { id: "bang-030", nameEn: "Sleeping too much", nameBn: "Beshi ghuma", category: "time", severity: 1, classification: "time_wasting", descriptionEn: "Lazy sleeping.", descriptionBn: "Dorkar chara beshi ghumano.", islamicReferenceId: "ref-time-hadith" },
+  { id: "bang-031", nameEn: "Not reading Quran", nameBn: "Quran na pora", category: "islamic_discipline", severity: 3, classification: "sin", descriptionEn: "Avoiding Quran.", descriptionBn: "Quran porar chesta na kora.", islamicReferenceId: "ref-quran-quran" },
+  { id: "bang-032", nameEn: "Being harsh", nameBn: "Khorosh bhab", category: "behavior", severity: 2, classification: "bad_habit", descriptionEn: "Rough behavior.", descriptionBn: "Khorosh bhab dekhano.", islamicReferenceId: "ref-kindness-hadith" },
+  { id: "bang-033", nameEn: "Ignoring salah", nameBn: "Salah ignore kora", category: "islamic_discipline", severity: 3, classification: "sin", descriptionEn: "Missing prayer.", descriptionBn: "Salah na pora.", islamicReferenceId: "ref-salah-quran" },
+  { id: "bang-034", nameEn: "Not cleaning room", nameBn: "Room na porishkar kora", category: "behavior", severity: 1, classification: "bad_habit", descriptionEn: "Being untidy.", descriptionBn: "Room porishkar na rakha.", islamicReferenceId: "ref-clean-hadith" },
+  { id: "bang-035", nameEn: "Wasting electricity", nameBn: "Bidyut nosto kora", category: "behavior", severity: 1, classification: "bad_habit", descriptionEn: "Not saving power.", descriptionBn: "Oshongkho bidyut nosto kora.", islamicReferenceId: "ref-waste-quran" },
+  { id: "bang-036", nameEn: "Eating while angry", nameBn: "Raag obosthay khawa", category: "behavior", severity: 1, classification: "bad_habit", descriptionEn: "Unhealthy habit.", descriptionBn: "Raag thakle khawa.", islamicReferenceId: "ref-food-hadith" },
+  { id: "bang-037", nameEn: "Being late", nameBn: "Late kora", category: "time", severity: 2, classification: "bad_habit", descriptionEn: "Not valuing time.", descriptionBn: "Shob somoy late kora.", islamicReferenceId: "ref-time-hadith" },
+  { id: "bang-038", nameEn: "Not saying Bismillah", nameBn: "Bismillah na bola", category: "islamic_discipline", severity: 1, classification: "bad_habit", descriptionEn: "Forgetting blessing.", descriptionBn: "Kono kaaj er shuru te bismillah na bola.", islamicReferenceId: "ref-manners-hadith" },
+  { id: "bang-039", nameEn: "Talking back to elders", nameBn: "Boro der palta kotha bola", category: "speech", severity: 3, classification: "sin", descriptionEn: "Disrespect.", descriptionBn: "Boro der sathe palta kotha bola.", islamicReferenceId: "ref-parents-quran" },
+  { id: "bang-040", nameEn: "Not praying Salah on time", nameBn: "Waqt moto salah na pora", category: "islamic_discipline", severity: 3, classification: "sin", descriptionEn: "Delayed prayer.", descriptionBn: "Salah waqt moto na pora.", islamicReferenceId: "ref-salah-quran" }
 ];
 
 // src/data/badDeedsData.ts
