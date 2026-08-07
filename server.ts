@@ -564,8 +564,25 @@ Strict guidelines:
   } catch (err) {
     console.error('Gemini analysis error:', err);
     res.status(200).json({
-      insightEn: 'Consistency in daily prayers and lowering gaze is the foundation of controlling the Nafs.',
-      insightBn: 'দৈনন্দিন নামাযে স্থায়িত্ব ও দৃষ্টি সংযমই নফস নিয়ন্ত্রণের মূল চাবিকাঠি।'
+      type: 'daily',
+      date: new Date().toISOString().split('T')[0],
+      analysisTitleEn: 'Personal Nafs Review',
+      analysisTitleBn: 'ব্যক্তিগত নফস রিভিউ',
+      summaryEn: 'Consistency in daily prayers and lowering gaze is the foundation of controlling the Nafs.',
+      summaryBn: 'দৈনন্দিন নামাযে স্থায়িত্ব ও দৃষ্টি সংযমই নফস নিয়ন্ত্রণের মূল চাবিকাঠি।',
+      whatWentWellEn: ['Maintaining consistent Salah', 'Honest daily tracking'],
+      whatWentWellBn: ['নিয়মিত নামায বজায় রাখা', 'সততার সাথে দৈনিক হিসাব রাখা'],
+      whatWentWrongEn: ['Occasional distraction during Salah'],
+      whatWentWrongBn: ['সালাতের সময় মাঝে মাঝে অমনোযোগিতা'],
+      biggestChallengeEn: 'Maintaining focus in prayers.',
+      biggestChallengeBn: 'নামাযে মনোযোগ বজায় রাখা।',
+      biggestVictoryEn: 'Keeping daily record.',
+      biggestVictoryBn: 'দৈনিক হিসাব রাখা।',
+      recommendedActionEn: 'Continue Istighfar and Salah.',
+      recommendedActionBn: 'ইস্তিগফার ও নামায চালিয়ে যান।',
+      tomorrowFocusEn: 'Focus on Salah presence.',
+      tomorrowFocusBn: 'নামাযে মনোযোগের ওপর গুরুত্ব দিন।',
+      generatedAt: new Date().toISOString()
     });
   }
 });

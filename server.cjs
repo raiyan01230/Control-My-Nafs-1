@@ -67781,8 +67781,25 @@ Strict guidelines:
   } catch (err) {
     console.error("Gemini analysis error:", err);
     res.status(200).json({
-      insightEn: "Consistency in daily prayers and lowering gaze is the foundation of controlling the Nafs.",
-      insightBn: "\u09A6\u09C8\u09A8\u09A8\u09CD\u09A6\u09BF\u09A8 \u09A8\u09BE\u09AE\u09BE\u09AF\u09C7 \u09B8\u09CD\u09A5\u09BE\u09DF\u09BF\u09A4\u09CD\u09AC \u0993 \u09A6\u09C3\u09B7\u09CD\u099F\u09BF \u09B8\u0982\u09AF\u09AE\u0987 \u09A8\u09AB\u09B8 \u09A8\u09BF\u09DF\u09A8\u09CD\u09A4\u09CD\u09B0\u09A3\u09C7\u09B0 \u09AE\u09C2\u09B2 \u099A\u09BE\u09AC\u09BF\u0995\u09BE\u09A0\u09BF\u0964"
+      type: "daily",
+      date: (/* @__PURE__ */ new Date()).toISOString().split("T")[0],
+      analysisTitleEn: "Personal Nafs Review",
+      analysisTitleBn: "\u09AC\u09CD\u09AF\u0995\u09CD\u09A4\u09BF\u0997\u09A4 \u09A8\u09AB\u09B8 \u09B0\u09BF\u09AD\u09BF\u0989",
+      summaryEn: "Consistency in daily prayers and lowering gaze is the foundation of controlling the Nafs.",
+      summaryBn: "\u09A6\u09C8\u09A8\u09A8\u09CD\u09A6\u09BF\u09A8 \u09A8\u09BE\u09AE\u09BE\u09AF\u09C7 \u09B8\u09CD\u09A5\u09BE\u09DF\u09BF\u09A4\u09CD\u09AC \u0993 \u09A6\u09C3\u09B7\u09CD\u099F\u09BF \u09B8\u0982\u09AF\u09AE\u0987 \u09A8\u09AB\u09B8 \u09A8\u09BF\u09DF\u09A8\u09CD\u09A4\u09CD\u09B0\u09A3\u09C7\u09B0 \u09AE\u09C2\u09B2 \u099A\u09BE\u09AC\u09BF\u0995\u09BE\u09A0\u09BF\u0964",
+      whatWentWellEn: ["Maintaining consistent Salah", "Honest daily tracking"],
+      whatWentWellBn: ["\u09A8\u09BF\u09DF\u09AE\u09BF\u09A4 \u09A8\u09BE\u09AE\u09BE\u09AF \u09AC\u099C\u09BE\u09DF \u09B0\u09BE\u0996\u09BE", "\u09B8\u09A4\u09A4\u09BE\u09B0 \u09B8\u09BE\u09A5\u09C7 \u09A6\u09C8\u09A8\u09BF\u0995 \u09B9\u09BF\u09B8\u09BE\u09AC \u09B0\u09BE\u0996\u09BE"],
+      whatWentWrongEn: ["Occasional distraction during Salah"],
+      whatWentWrongBn: ["\u09B8\u09BE\u09B2\u09BE\u09A4\u09C7\u09B0 \u09B8\u09AE\u09DF \u09AE\u09BE\u099D\u09C7 \u09AE\u09BE\u099D\u09C7 \u0985\u09AE\u09A8\u09CB\u09AF\u09CB\u0997\u09BF\u09A4\u09BE"],
+      biggestChallengeEn: "Maintaining focus in prayers.",
+      biggestChallengeBn: "\u09A8\u09BE\u09AE\u09BE\u09AF\u09C7 \u09AE\u09A8\u09CB\u09AF\u09CB\u0997 \u09AC\u099C\u09BE\u09DF \u09B0\u09BE\u0996\u09BE\u0964",
+      biggestVictoryEn: "Keeping daily record.",
+      biggestVictoryBn: "\u09A6\u09C8\u09A8\u09BF\u0995 \u09B9\u09BF\u09B8\u09BE\u09AC \u09B0\u09BE\u0996\u09BE\u0964",
+      recommendedActionEn: "Continue Istighfar and Salah.",
+      recommendedActionBn: "\u0987\u09B8\u09CD\u09A4\u09BF\u0997\u09AB\u09BE\u09B0 \u0993 \u09A8\u09BE\u09AE\u09BE\u09AF \u099A\u09BE\u09B2\u09BF\u09DF\u09C7 \u09AF\u09BE\u09A8\u0964",
+      tomorrowFocusEn: "Focus on Salah presence.",
+      tomorrowFocusBn: "\u09A8\u09BE\u09AE\u09BE\u09AF\u09C7 \u09AE\u09A8\u09CB\u09AF\u09CB\u0997\u09C7\u09B0 \u0993\u09AA\u09B0 \u0997\u09C1\u09B0\u09C1\u09A4\u09CD\u09AC \u09A6\u09BF\u09A8\u0964",
+      generatedAt: (/* @__PURE__ */ new Date()).toISOString()
     });
   }
 });
