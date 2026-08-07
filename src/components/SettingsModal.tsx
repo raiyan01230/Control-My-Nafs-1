@@ -26,6 +26,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   const [hideSensitive, setHideSensitive] = useState(settings.hideSensitiveCategories || false);
   const [securityLockEnabled, setSecurityLockEnabled] = useState(settings.securityLockEnabled || false);
   const [securityPin, setSecurityPin] = useState(settings.securityPin || '1234');
+  const [securityPassword, setSecurityPassword] = useState(settings.securityPassword || 'admin123');
+  const [showPassword, setShowPassword] = useState(false);
   const [showPin, setShowPin] = useState(false);
   const [dbStatus, setDbStatus] = useState<any>(null);
 
@@ -97,10 +99,10 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     });
 
     // Save security PIN backend endpoint
-    fetch('/api/auth/set-pin', {
+    fetch('/api/auth/set-security', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ newPin: securityPin, securityLockEnabled })
+      body: JSON.stringify({ newPin: securityPin, newPassword: securityPassword, securityLockEnabled })
     }).catch(e => console.error(e));
 
     onClose();
@@ -120,7 +122,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 {t.settings} & {language === 'bn' ? 'সিকিউরিটি' : 'Security'}
               </h2>
               <p className="text-[11px] text-slate-400 font-medium">
-                {language === 'bn' ? 'ব্যক্তিগত ওয়েবসাইট নিরাপত্তা ও ডেটাবেজ কনফিগারেশন' : 'Personal Website Security, PIN Protection & Database Engine'}
+                {language === 'bn' ? 'ব্যক্তিগত ওয়েবসাইট নিরাপত্তা ও ডেটাবেজ কনফিগারেশন' : 'Personal Website Security, 3-Layer Protection & Database Engine'}
               </p>
             </div>
           </div>
@@ -147,7 +149,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             }`}
           >
             <Lock className="w-3.5 h-3.5" />
-            <span>{language === 'bn' ? 'ওয়েবসাইট লক & পিন' : 'Security PIN Lock'}</span>
+            <span>{language === 'bn' ? 'ওয়েবসাইট লক & পিন' : '3-Layer Security Lock'}</span>
           </button>
           <button
             onClick={() => setActiveTab('mysql')}

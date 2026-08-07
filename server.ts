@@ -554,25 +554,29 @@ app.post('/api/db/test-connection', async (req: Request, res: Response) => {
 
 // Verify Security PIN Endpoint
 app.post('/api/auth/verify-pin', (req: Request, res: Response) => {
-  const { pin } = req.body;
+  const { pin, password } = req.body;
   const currentPin = localDb.settings.securityPin || '1234';
+  const currentPassword = localDb.settings.securityPassword || 'admin123';
   
   if (!localDb.settings.securityLockEnabled) {
     return res.json({ success: true, message: 'Security lock is disabled' });
   }
 
-  if (pin === currentPin) {
+  if (pin === currentPin && password === currentPassword) {
     return res.json({ success: true });
   } else {
-    return res.status(401).json({ success: false, error: 'Incorrect PIN code' });
+    return res.status(401).json({ success: false, error: 'Incorrect credentials' });
   }
 });
 
 // Update Security PIN / Lock Settings
-app.post('/api/auth/set-pin', (req: Request, res: Response) => {
-  const { newPin, securityLockEnabled } = req.body;
-  if (newPin) {
+app.post('/api/auth/set-security', (req: Request, res: Response) => {
+  const { newPin, newPassword, securityLockEnabled } = req.body;
+  if (newPin !== undefined) {
     localDb.settings.securityPin = newPin;
+  }
+  if (newPassword !== undefined) {
+    localDb.settings.securityPassword = newPassword;
   }
   if (securityLockEnabled !== undefined) {
     localDb.settings.securityLockEnabled = !!securityLockEnabled;
@@ -581,7 +585,7 @@ app.post('/api/auth/set-pin', (req: Request, res: Response) => {
   res.json({
     success: true,
     securityLockEnabled: localDb.settings.securityLockEnabled,
-    message: 'Security PIN updated successfully'
+    message: 'Security settings updated successfully'
   });
 });
 

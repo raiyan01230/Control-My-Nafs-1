@@ -222,6 +222,7 @@ export interface UserSettings {
   notificationsEnabled: boolean;
   securityLockEnabled?: boolean;
   securityPin?: string;
+  securityPassword?: string;
   autoLockMinutes?: number;
   goals?: GoalRecord[];
 }
