@@ -5,7 +5,6 @@ import { Navigation, NavTab } from './components/Navigation';
 import { DailyReminderCard } from './components/DailyReminderCard';
 import { TodayScoreCard } from './components/TodayScoreCard';
 import { PrayerTimes } from './components/PrayerTimes';
-import { ActivityHeatmap } from './components/ActivityHeatmap';
 import { DhikrCounter } from './components/DhikrCounter';
 import { QuickActionsModal } from './components/QuickActionsModal';
 import { SalahTracker } from './components/SalahTracker';
@@ -374,7 +373,6 @@ export function App() {
                   <PrayerTimes language={language} />
                   <DailyReminderCard language={language} />
                   <TodayScoreCard record={record} language={language} />
-                  <ActivityHeatmap language={language} records={monthlyRecords} />
                   <DhikrCounter language={language} onSaveDhikr={(name, count) => handleRecordGoodDeed('custom', `${name} (${count}x)`, 'Dhikr')} />
                   <AIPersonalAnalysisView
                     record={record}
