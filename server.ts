@@ -38,7 +38,6 @@ const defaultSettings: UserSettings = {
   weeklyTahajjudTarget: 1,
   dailyGoodDeedsTarget: 3,
   hideSensitiveCategories: false,
-  useMySqlIfAvailable: true,
   notificationsEnabled: true
 };
 

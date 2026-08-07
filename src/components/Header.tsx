@@ -83,6 +83,15 @@ export const Header: React.FC<HeaderProps> = ({
             {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-blue-400" />}
           </button>
 
+          {/* Emergency Panic Button */}
+          <button
+            onClick={() => window.location.href = 'https://google.com'}
+            className="p-2 rounded-xl bg-rose-900/50 hover:bg-rose-800 border border-rose-500/50 text-rose-300 transition shadow-sm flex items-center space-x-1"
+            title={language === 'bn' ? 'জরুরী প্রস্থান' : 'Emergency Exit'}
+          >
+            <Shield className="w-4 h-4" />
+          </button>
+          
           {/* Lock Session Button */}
           {onLockSession && (
             <button

@@ -219,7 +219,6 @@ export interface UserSettings {
   weeklyTahajjudTarget: number; // default 1
   dailyGoodDeedsTarget: number; // default 3
   hideSensitiveCategories: boolean;
-  useMySqlIfAvailable: boolean;
   notificationsEnabled: boolean;
   securityLockEnabled?: boolean;
   securityPin?: string;

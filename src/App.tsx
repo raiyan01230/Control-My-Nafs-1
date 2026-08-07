@@ -325,7 +325,7 @@ export function App() {
           onLanguageToggle={() => setLanguage(language === 'en' ? 'bn' : 'en')}
           onThemeToggle={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           onOpenSettings={() => setShowSettings(true)}
-          onLockSession={settings.securityLockEnabled ? () => setIsUnlocked(false) : undefined}
+          onLockSession={() => setIsUnlocked(false)}
         />
 
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row">
@@ -478,7 +478,7 @@ export function App() {
       )}
 
       {/* Security PIN Lock Overlay */}
-      {settings.securityLockEnabled && !isUnlocked && (
+      {!isUnlocked && (
         <SecurityLockModal
           language={language}
           onUnlockSuccess={() => setIsUnlocked(true)}
