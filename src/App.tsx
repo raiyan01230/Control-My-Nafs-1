@@ -23,7 +23,6 @@ import { IslamicReferenceCard } from './components/IslamicReferenceCard';
 import { SettingsModal } from './components/SettingsModal';
 import { AIPersonalAnalysisView } from './components/AIPersonalAnalysisView';
 import { SecurityLockModal } from './components/SecurityLockModal';
-import { InitialGate } from './components/InitialGate';
 import { GoalsView } from './components/GoalsView';
 import { Sparkles, Bot, Calendar as CalendarIcon } from 'lucide-react';
 
@@ -36,7 +35,7 @@ export function App() {
   const [theme, setTheme] = useState<ThemeMode>('dark');
   const [showSettings, setShowSettings] = useState<boolean>(false);
   const [isUnlocked, setIsUnlocked] = useState<boolean>(true);
-  const [masterUnlocked, setMasterUnlocked] = useState<boolean>(false);
+  const [masterUnlocked, setMasterUnlocked] = useState<boolean>(true);
 
   const [record, setRecord] = useState<DailyRecord | null>(null);
   const [monthlyRecords, setMonthlyRecords] = useState<DailyRecord[]>([]);
@@ -483,11 +482,6 @@ export function App() {
           onExportCsv={handleExportCsv}
           onExportJson={handleExportJson}
         />
-      )}
-
-      {/* Security PIN Lock Overlay */}
-      {!masterUnlocked && (
-        <InitialGate onUnlock={() => setMasterUnlocked(true)} />
       )}
 
       {/* Security PIN Lock Overlay */}

@@ -67724,14 +67724,6 @@ app.post("/api/db/test-connection", async (req, res) => {
     });
   }
 });
-app.post("/api/auth/verify-master", (req, res) => {
-  const { password } = req.body;
-  if (password === "3945") {
-    return res.json({ success: true });
-  } else {
-    return res.status(401).json({ success: false, error: "Incorrect password" });
-  }
-});
 app.post("/api/auth/verify-pin", (req, res) => {
   const { pin } = req.body;
   const currentPin = localDb.settings.securityPin || "1234";
