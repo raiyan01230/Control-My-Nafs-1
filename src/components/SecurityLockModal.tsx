@@ -49,6 +49,12 @@ export const SecurityLockModal: React.FC<SecurityLockModalProps> = ({
          return;
       }
       
+      const isAvailable = await window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
+      if (!isAvailable) {
+         setError(language === 'bn' ? 'বায়োমেট্রিক অথেন্টিকেটর পাওয়া যায়নি। পিন ব্যবহার করুন।' : 'Biometric authenticator not found. Please use PIN.');
+         return;
+      }
+      
       const challenge = new Uint8Array(32);
       window.crypto.getRandomValues(challenge);
       
@@ -62,15 +68,22 @@ export const SecurityLockModal: React.FC<SecurityLockModalProps> = ({
              displayName: "User"
            },
            pubKeyCredParams: [{ type: "public-key", alg: -7 }, { type: "public-key", alg: -257 }],
-           authenticatorSelection: { userVerification: "required" },
+           authenticatorSelection: { 
+             authenticatorAttachment: "platform",
+             userVerification: "required" 
+           },
            timeout: 60000,
          }
       });
       
       onUnlockSuccess();
-    } catch (err) {
+    } catch (err: any) {
        console.error(err);
-       setError(language === 'bn' ? 'ফেস আইডি ব্যর্থ বা বাতিল করা হয়েছে।' : 'Face ID cancelled or failed.');
+       if (err.name === 'NotAllowedError') {
+         setError(language === 'bn' ? 'ফেস আইডি বাতিল করা হয়েছে। প্রিভিউতে কাজ না করলে নতুন ট্যাবে খুলুন।' : 'Face ID cancelled or blocked. If in preview, try opening in a new tab.');
+       } else {
+         setError(language === 'bn' ? 'ফেস আইডি ব্যর্থ হয়েছে। দয়া করে পিন ব্যবহার করুন।' : 'Face ID failed. Please use your PIN.');
+       }
     }
   };
 
