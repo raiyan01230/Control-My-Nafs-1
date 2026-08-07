@@ -67171,6 +67171,7 @@ Strict guidelines:
 - Compare current performance with previous metrics (e.g. "reduced behavior by X%" or "increased for N days").
 - Emphasize: Salah consistency -> Nafs discipline -> Sincere Tawbah -> Preventive focus.
 - Output JSON format strictly.
+- Include a brief, inspirational Islamic quote relevant to the analysis results (dailyQuoteEn/dailyQuoteBn).
       `;
       const response = await ai.models.generateContent({
         model: "gemini-3.6-flash",
@@ -67201,7 +67202,9 @@ Strict guidelines:
               detectedTriggersEn: { type: Type.ARRAY, items: { type: Type.STRING } },
               detectedTriggersBn: { type: Type.ARRAY, items: { type: Type.STRING } },
               recommendationsEn: { type: Type.ARRAY, items: { type: Type.STRING } },
-              recommendationsBn: { type: Type.ARRAY, items: { type: Type.STRING } }
+              recommendationsBn: { type: Type.ARRAY, items: { type: Type.STRING } },
+              dailyQuoteEn: { type: Type.STRING },
+              dailyQuoteBn: { type: Type.STRING }
             },
             required: [
               "analysisTitleEn",
@@ -67315,6 +67318,8 @@ Strict guidelines:
     trendsTextBn: trendTextBn,
     detectedTriggersEn: topTriggers.length > 0 ? topTriggers : ["Digital media", "Social environment"],
     detectedTriggersBn: topTriggers.length > 0 ? topTriggers : ["\u09A1\u09BF\u099C\u09BF\u099F\u09BE\u09B2 \u09AE\u09BF\u09A1\u09BF\u09DF\u09BE", "\u09B8\u09BE\u09AE\u09BE\u099C\u09BF\u0995 \u09AA\u09B0\u09BF\u09AC\u09C7\u09B6"],
+    dailyQuoteEn: "Verily, Allah loves those who turn to Him constantly.",
+    dailyQuoteBn: "\u09A8\u09BF\u09B6\u09CD\u099A\u09DF\u0987 \u0986\u09B2\u09CD\u09B2\u09BE\u09B9 \u09A4\u09BE\u09A6\u09C7\u09B0\u0995\u09C7 \u09AD\u09BE\u09B2\u09CB\u09AC\u09BE\u09B8\u09C7\u09A8 \u09AF\u09BE\u09B0\u09BE \u09B8\u09AC\u09B8\u09AE\u09DF \u09A4\u09BE\u0981\u09B0 \u09A6\u09BF\u0995\u09C7 \u09AB\u09BF\u09B0\u09C7 \u0986\u09B8\u09C7\u0964",
     recommendationsEn: [
       "Set strict screen time limits on triggering applications.",
       "Perform 100 Astaghfirullah immediately after any slip-up.",
@@ -67628,6 +67633,37 @@ app.post("/api/records/good-deed", async (req, res) => {
   record.goodDeeds.push(newGoodDeed);
   const updated = await saveDailyRecord(record);
   res.json(updated);
+});
+app.post("/api/ghunah/add", async (req, res) => {
+  const { name, description, frequency } = req.body;
+  const newGhunah = {
+    id: `ghunah-${Date.now()}`,
+    name,
+    description,
+    frequency,
+    aiAdvice: "Generating...",
+    addedAt: (/* @__PURE__ */ new Date()).toISOString()
+  };
+  try {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (apiKey) {
+      const ai = new GoogleGenAI2({ apiKey, httpOptions: { headers: { "User-Agent": "aistudio-build" } } });
+      const prompt = `Give me a brief, supportive Islamic-focused tip on how to stop the habit of: ${name}. Description: ${description}. Frequency: ${frequency}. Keep it under 2 sentences.`;
+      const response = await ai.models.generateContent({ model: "gemini-3.6-flash", contents: prompt });
+      newGhunah.aiAdvice = response.text || "Make Du'a for strength.";
+    } else {
+      newGhunah.aiAdvice = "Make Du'a for strength.";
+    }
+  } catch (e2) {
+    newGhunah.aiAdvice = "Make Du'a for strength.";
+  }
+  if (!localDb.settings.regularGhunah) localDb.settings.regularGhunah = [];
+  localDb.settings.regularGhunah.push(newGhunah);
+  saveLocalDb(localDb);
+  res.json(newGhunah);
+});
+app.get("/api/ghunah/list", (req, res) => {
+  res.json(localDb.settings.regularGhunah || []);
 });
 app.post("/api/records/nafs-victory", async (req, res) => {
   const { date, category, title, description, difficulty, notes } = req.body;

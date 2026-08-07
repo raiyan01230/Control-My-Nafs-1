@@ -381,6 +381,42 @@ app.post('/api/records/good-deed', async (req: Request, res: Response) => {
   res.json(updated);
 });
 
+// Add regular ghunah
+app.post('/api/ghunah/add', async (req: Request, res: Response) => {
+  const { name, description, frequency } = req.body;
+  const newGhunah = {
+    id: `ghunah-${Date.now()}`,
+    name,
+    description,
+    frequency,
+    aiAdvice: 'Generating...',
+    addedAt: new Date().toISOString()
+  };
+
+  try {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (apiKey) {
+      const ai = new GoogleGenAI({ apiKey, httpOptions: { headers: { 'User-Agent': 'aistudio-build' } } });
+      const prompt = `Give me a brief, supportive Islamic-focused tip on how to stop the habit of: ${name}. Description: ${description}. Frequency: ${frequency}. Keep it under 2 sentences.`;
+      const response = await ai.models.generateContent({ model: 'gemini-3.6-flash', contents: prompt });
+      newGhunah.aiAdvice = response.text || 'Make Du\'a for strength.';
+    } else {
+      newGhunah.aiAdvice = 'Make Du\'a for strength.';
+    }
+  } catch (e) {
+    newGhunah.aiAdvice = 'Make Du\'a for strength.';
+  }
+
+  if (!localDb.settings.regularGhunah) localDb.settings.regularGhunah = [];
+  localDb.settings.regularGhunah.push(newGhunah);
+  saveLocalDb(localDb);
+  res.json(newGhunah);
+});
+
+app.get('/api/ghunah/list', (req: Request, res: Response) => {
+  res.json(localDb.settings.regularGhunah || []);
+});
+
 // Add Nafs Victory
 app.post('/api/records/nafs-victory', async (req: Request, res: Response) => {
   const { date, category, title, description, difficulty, notes } = req.body;

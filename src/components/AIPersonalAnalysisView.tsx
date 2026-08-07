@@ -213,6 +213,13 @@ export const AIPersonalAnalysisView: React.FC<AIPersonalAnalysisViewProps> = ({
               <p><strong className="text-emerald-400">{language === 'bn' ? 'আগামীকালের ফোকাস:' : 'Tomorrow Focus:'}</strong> {language === 'bn' ? session.tomorrowFocusBn : session.tomorrowFocusEn}</p>
             </div>
           </div>
+          
+          {/* Daily Inspirational Quote */}
+          {session.dailyQuoteEn && (
+            <div className="p-4 rounded-2xl bg-[#081f18]/40 border border-emerald-500/20 text-center italic text-emerald-200">
+               "{language === 'bn' ? session.dailyQuoteBn : session.dailyQuoteEn}"
+            </div>
+          )}
         </div>
       )}
     </div>

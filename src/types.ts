@@ -113,6 +113,8 @@ export interface AIPersonalSession {
   detectedTriggersBn?: string[];
   recommendationsEn?: string[];
   recommendationsBn?: string[];
+  dailyQuoteEn?: string;
+  dailyQuoteBn?: string;
   generatedAt: string;
 }
 
@@ -212,6 +214,16 @@ export interface GoalRecord {
   updatedAt: string;
 }
 
+export interface RegularGhunah {
+  id: string;
+  name: string;
+  description: string;
+  frequency: 'daily' | 'weekly' | 'monthly';
+  aiAdvice: string;
+  lastAnalysisAt?: string;
+  addedAt: string;
+}
+
 export interface UserSettings {
   userName: string;
   language: Language;
@@ -224,6 +236,7 @@ export interface UserSettings {
   securityPin?: string;
   autoLockMinutes?: number;
   goals?: GoalRecord[];
+  regularGhunah?: RegularGhunah[];
 }
 
 export interface StreaksData {

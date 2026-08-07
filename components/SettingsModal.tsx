@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Language, UserSettings } from '../types';
 import { UI_TRANSLATIONS } from '../utils/translations';
-import { Database, Download, Shield, X, Save, KeyRound, Server, CheckCircle2, AlertCircle, RefreshCw, Lock, Eye, EyeOff } from 'lucide-react';
+import { Database, Download, Shield, X, Save, KeyRound, Server, CheckCircle2, AlertCircle, RefreshCw, Lock, Eye, EyeOff, Bot } from 'lucide-react';
+import { GhunahManager } from './GhunahManager';
 
 interface SettingsModalProps {
   language: Language;
@@ -21,7 +22,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onExportJson
 }) => {
   const t = UI_TRANSLATIONS[language];
-  const [activeTab, setActiveTab] = useState<'general' | 'security' | 'backup'>('general');
+  const [activeTab, setActiveTab] = useState<'general' | 'security' | 'backup' | 'ghunah'>('general');
   const [userName, setUserName] = useState(settings.userName || 'Servant of Allah');
   const [hideSensitive, setHideSensitive] = useState(settings.hideSensitiveCategories || false);
   const [securityLockEnabled, setSecurityLockEnabled] = useState(settings.securityLockEnabled || false);
@@ -102,6 +103,15 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           >
             <Download className="w-3.5 h-3.5" />
             <span>{language === 'bn' ? 'ব্যাকআপ' : 'Backup'}</span>
+          </button>
+          <button
+            onClick={() => setActiveTab('ghunah')}
+            className={`px-3 py-2 rounded-t-xl transition-all border-b-2 flex items-center space-x-1.5 ${
+              activeTab === 'ghunah' ? 'border-emerald-500 text-emerald-400 bg-[#121824]' : 'border-transparent text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <Bot className="w-3.5 h-3.5" />
+            <span>{language === 'bn' ? 'নিয়মিত গুনাহ' : 'Regular Ghunah'}</span>
           </button>
         </div>
 
@@ -251,6 +261,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               </button>
             </div>
           </div>
+        )}
+
+        {/* Tab 5: Ghunah Manager */}
+        {activeTab === 'ghunah' && (
+          <GhunahManager language={language} />
         )}
 
         {/* Save Action Bar */}

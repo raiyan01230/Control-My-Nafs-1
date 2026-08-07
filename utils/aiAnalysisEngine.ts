@@ -90,6 +90,7 @@ Strict guidelines:
 - Compare current performance with previous metrics (e.g. "reduced behavior by X%" or "increased for N days").
 - Emphasize: Salah consistency -> Nafs discipline -> Sincere Tawbah -> Preventive focus.
 - Output JSON format strictly.
+- Include a brief, inspirational Islamic quote relevant to the analysis results (dailyQuoteEn/dailyQuoteBn).
       `;
 
       const response = await ai.models.generateContent({
@@ -122,6 +123,8 @@ Strict guidelines:
               detectedTriggersBn: { type: Type.ARRAY, items: { type: Type.STRING } },
               recommendationsEn: { type: Type.ARRAY, items: { type: Type.STRING } },
               recommendationsBn: { type: Type.ARRAY, items: { type: Type.STRING } },
+              dailyQuoteEn: { type: Type.STRING },
+              dailyQuoteBn: { type: Type.STRING },
             },
             required: [
               'analysisTitleEn', 'analysisTitleBn', 'summaryEn', 'summaryBn',
@@ -233,6 +236,8 @@ Strict guidelines:
     trendsTextBn: trendTextBn,
     detectedTriggersEn: topTriggers.length > 0 ? topTriggers : ['Digital media', 'Social environment'],
     detectedTriggersBn: topTriggers.length > 0 ? topTriggers : ['ডিজিটাল মিডিয়া', 'সামাজিক পরিবেশ'],
+    dailyQuoteEn: 'Verily, Allah loves those who turn to Him constantly.',
+    dailyQuoteBn: 'নিশ্চয়ই আল্লাহ তাদেরকে ভালোবাসেন যারা সবসময় তাঁর দিকে ফিরে আসে।',
     recommendationsEn: [
       'Set strict screen time limits on triggering applications.',
       'Perform 100 Astaghfirullah immediately after any slip-up.',
