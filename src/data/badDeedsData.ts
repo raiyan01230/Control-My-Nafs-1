@@ -1,5 +1,6 @@
 import { BadDeedOption } from '../types';
 import { MASTER_CATEGORIES } from './categories';
+import { BANG_DEED_OPTIONS } from './bangDeedsData';
 
 export const BAD_DEED_CATEGORIES = MASTER_CATEGORIES;
 
@@ -1012,7 +1013,8 @@ export const SEED_BAD_DEED_OPTIONS: BadDeedOption[] = [
     descriptionEn: 'Putting self-gratification ahead of family obligations.',
     descriptionBn: 'পরিবারের প্রতি দায়িত্ব না পালন করে স্বার্থপরতা করা।',
     islamicReferenceId: 'ref-parents-quran'
-  }
+  },
+  ...BANG_DEED_OPTIONS
 ];
 
 // Set countable boolean property for every option
