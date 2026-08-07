@@ -67686,6 +67686,14 @@ app.get("/api/records/range", async (req, res) => {
   }
   res.json(recordsList);
 });
+app.get("/api/records/recent", (req, res) => {
+  const allRecords = Object.values(localDb.records);
+  const recent = allRecords.sort((a, b) => new Date(b.updatedAt || "").getTime() - new Date(a.updatedAt || "").getTime()).slice(0, 5).map((r2) => ({
+    user: localDb.settings.userName || "User",
+    action: `Updated record for ${r2.date} (Score: ${r2.score})`
+  }));
+  res.json(recent);
+});
 app.post("/api/records/reward", async (req, res) => {
   const { date, rewardId, rewardName, reason } = req.body;
   const targetDate = date || getTodayDateString();

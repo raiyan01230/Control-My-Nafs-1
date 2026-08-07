@@ -6,6 +6,7 @@ import { DailyReminderCard } from './components/DailyReminderCard';
 import { TodayScoreCard } from './components/TodayScoreCard';
 import { PrayerTimes } from './components/PrayerTimes';
 import { DhikrCounter } from './components/DhikrCounter';
+import { LiveActivityFeed } from './components/LiveActivityFeed';
 import { QuickActionsModal } from './components/QuickActionsModal';
 import { SalahTracker } from './components/SalahTracker';
 import { AyatulKursiTracker } from './components/AyatulKursiTracker';
@@ -374,6 +375,7 @@ export function App() {
                   <DailyReminderCard language={language} />
                   <TodayScoreCard record={record} language={language} />
                   <DhikrCounter language={language} onSaveDhikr={(name, count) => handleRecordGoodDeed('custom', `${name} (${count}x)`, 'Dhikr')} />
+                  <LiveActivityFeed language={language} />
                   <AIPersonalAnalysisView
                     record={record}
                     language={language}
