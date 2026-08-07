@@ -79,8 +79,8 @@ export const SecurityLockModal: React.FC<SecurityLockModalProps> = ({
       onUnlockSuccess();
     } catch (err: any) {
        console.error(err);
-       if (err.name === 'NotAllowedError') {
-         setError(language === 'bn' ? 'ফেস আইডি বাতিল করা হয়েছে। প্রিভিউতে কাজ না করলে নতুন ট্যাবে খুলুন।' : 'Face ID cancelled or blocked. If in preview, try opening in a new tab.');
+       if (err.name === 'NotAllowedError' || (err.message && err.message.includes('publickey-credentials'))) {
+         setError(language === 'bn' ? 'ফেস আইডি এখানে অনুমোদিত নয়। অনুগ্রহ করে অ্যাপটি নতুন ট্যাবে খুলুন।' : 'Face ID blocked in preview. Please open the app in a new tab to use Biometrics.');
        } else {
          setError(language === 'bn' ? 'ফেস আইডি ব্যর্থ হয়েছে। দয়া করে পিন ব্যবহার করুন।' : 'Face ID failed. Please use your PIN.');
        }
