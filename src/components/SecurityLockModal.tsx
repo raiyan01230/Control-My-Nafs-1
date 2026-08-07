@@ -42,7 +42,13 @@ export const SecurityLockModal: React.FC<SecurityLockModalProps> = ({
     }
   };
 
+  const isIframe = window.self !== window.top;
+
   const handleFaceID = async () => {
+    if (isIframe) {
+      setError(language === 'bn' ? 'ফেস আইডি এখানে অনুমোদিত নয়। অনুগ্রহ করে অ্যাপটি নতুন ট্যাবে খুলুন।' : 'Face ID blocked in preview. Please open the app in a new tab to use Biometrics.');
+      return;
+    }
     try {
       if (!window.PublicKeyCredential) {
          setError(language === 'bn' ? 'আপনার ডিভাইসে ফেস আইডি/বায়োমেট্রিক সাপোর্ট নেই।' : 'Face ID / Biometrics not supported on this device.');
