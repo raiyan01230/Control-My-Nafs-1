@@ -4,6 +4,8 @@ import { Header } from './components/Header';
 import { Navigation, NavTab } from './components/Navigation';
 import { DailyReminderCard } from './components/DailyReminderCard';
 import { TodayScoreCard } from './components/TodayScoreCard';
+import { PrayerTimes } from './components/PrayerTimes';
+import { ActivityHeatmap } from './components/ActivityHeatmap';
 import { QuickActionsModal } from './components/QuickActionsModal';
 import { SalahTracker } from './components/SalahTracker';
 import { AyatulKursiTracker } from './components/AyatulKursiTracker';
@@ -88,7 +90,7 @@ export function App() {
   // Fetch monthly records for report
   useEffect(() => {
     const today = new Date(selectedDate);
-    const start = new Date(today.getFullYear(), today.getMonth(), 1).toISOString().split('T')[0];
+    const start = new Date(today.getFullYear() - 1, today.getMonth(), 1).toISOString().split('T')[0]; // Last 12 months
     const end = new Date(today.getFullYear(), today.getMonth() + 1, 0).toISOString().split('T')[0];
 
     fetch(`/api/records/range?startDate=${start}&endDate=${end}`)
@@ -369,8 +371,10 @@ export function App() {
             <>
               {activeTab === 'dashboard' && (
                 <div className="space-y-6">
+                  <PrayerTimes language={language} />
                   <DailyReminderCard language={language} />
                   <TodayScoreCard record={record} language={language} />
+                  <ActivityHeatmap language={language} records={monthlyRecords} />
                   <AIPersonalAnalysisView
                     record={record}
                     language={language}
